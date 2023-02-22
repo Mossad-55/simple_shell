@@ -51,3 +51,34 @@ int parse(char *line, int num_tokens, char **argv, int cmdcount)
 	return (exval); /* returns whether or not execve failed or worked */
 }
 
+/**
+ * myfree - function to free memory
+ * @line: line to be freed
+ * @ar: array to be freed
+ * @newline: line to be freed
+ * @array: array to be freed
+ */
+
+void myfree(char *line, char **ar, char *newline, char **array)
+{
+	int i = 0;
+
+	if (ar != NULL)
+	{
+		while (ar[i] != NULL)
+		{
+			free(ar[i]);
+			i++;
+		}
+		free(ar);
+	}
+
+	if (newline != NULL)
+		free(newline);
+
+	if (line != NULL)
+		free(line);
+
+	if (array != NULL)
+		free(array);
+}
